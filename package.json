@@ -1,0 +1,24 @@
+{
+  "name": "award-image-cropper",
+  "version": "1.0.0",
+  "description": "gm",
+  "main": "index.js",
+  "scripts": { 
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmieMax/award-image-cropper.git"
+  },
+  "author": "Jimmie Max",
+  "dependencies": {
+    "gm": "^1.23.1",
+    "node-xlsx": "^0.14.1",
+    "compressing": "^1.4.0"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmieMax/award-image-cropper/issues"
+  },
+  "homepage": "https://github.com/JimmieMax/award-image-cropper#readme"
+}
