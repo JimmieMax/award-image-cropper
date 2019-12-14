@@ -6,7 +6,8 @@ const compressing = require('compressing');
 const PINGFANG = './src/font/PingFang_medium.ttf';
 const HEITI = './src/font/STHEITI.ttf';
 
-const NormalTemplate = './src/template/千图网证书-Final-2019.jpg';
+const NormalTemplate = './src/template/普通模板.jpg';
+const SHEJIZHIXINGTemplate = './src/template/设计之星.jpg';
 const ZISHENTemplate = './src/template/资深达人.jpg';
 const SHOUXITemplate = './src/template/首席达人.jpg';
 
@@ -47,7 +48,7 @@ const croppedCallback = (level, name) => {
     }
 }
 
-const drawByNormal = (pathBase, template, name, level, index) => {
+const drawByNormal = (pathBase, template, name, level, levelName, index) => {
     gm(template)
         .font(PINGFANG)
         .fontSize(145)
@@ -55,7 +56,7 @@ const drawByNormal = (pathBase, template, name, level, index) => {
         .drawText(0, -420, name, 'Center')
         .fontSize(140)
         .fill('#b62d2b')
-        .drawText(882, 2286, level)
+        .drawText(0 , 480, levelName , 'Center')
         .quality(100)
         .write(`${pathBase + level}/${index+1}-${name}.jpg`, err => {
             if (!err) {
@@ -101,7 +102,6 @@ const crop = (xlsxPath, templateJpg) => {
         }
         list.forEach(([name], index) => {
             if (level && name) {
-                console.log(level, name, index + 1);
                 switch (level) {
                     case '资深':
                         drawBySpecial(pathBase, ZISHENTemplate, name, level, index, '#313536');
@@ -109,8 +109,11 @@ const crop = (xlsxPath, templateJpg) => {
                     case '首席':
                         drawBySpecial(pathBase, SHOUXITemplate, name, level, index, '#313536');
                         break;
+                    case '设计之星':
+                        drawByNormal(pathBase, SHEJIZHIXINGTemplate, name, level, '设计之星', index);
+                        break;
                     default:
-                        drawByNormal(pathBase, NormalTemplate, name, level, index);
+                        drawByNormal(pathBase, NormalTemplate, name, level, level, index);
                         return;
                 }
             }
@@ -118,4 +121,4 @@ const crop = (xlsxPath, templateJpg) => {
     });
 }
 
-crop('./src/list/证书制作名单20190908.xlsx')
+crop('./src/list/证书制作名单20191214.xlsx')
