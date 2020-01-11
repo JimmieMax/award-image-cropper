@@ -6,7 +6,7 @@ const compressing = require('compressing');
 const PINGFANG = './src/font/PingFang_medium.ttf';
 const HEITI = './src/font/STHEITI.ttf';
 
-const NormalTemplate = './src/template/普通模板.jpg';
+const NormalTemplate = './src/template/normal.jpg';
 const SHEJIZHIXINGTemplate = './src/template/设计之星.jpg';
 const ZISHENTemplate = './src/template/资深达人.jpg';
 const SHOUXITemplate = './src/template/首席达人.jpg';
@@ -56,7 +56,7 @@ const drawByNormal = (pathBase, template, name, level, levelName, index) => {
         .drawText(0, -420, name, 'Center')
         .fontSize(140)
         .fill('#b62d2b')
-        .drawText(0 , 480, levelName , 'Center')
+        .drawText(0 , 480, `${levelName}设计师` , 'Center')
         .quality(100)
         .write(`${pathBase + level}/${index+1}-${name}.jpg`, err => {
             if (!err) {
@@ -121,4 +121,4 @@ const crop = (xlsxPath, templateJpg) => {
     });
 }
 
-crop('./src/list/证书制作名单20191214.xlsx')
+crop('./src/list/证书制作名单20200111.xlsx')
