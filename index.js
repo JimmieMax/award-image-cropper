@@ -44,6 +44,7 @@ const croppedCallback = (level, name) => {
     croppedNum++;
     console.log(`${level}:${name} cropped`);
     if (croppedNum === sum) {
+        console.log('Cropped over, start compress...')
         compress();
     }
 }
@@ -95,13 +96,13 @@ const crop = (xlsxPath, templateJpg) => {
         data: list
     }) => {
         list.shift();
-        sum += list.length;
         const path = pathBase + level;
         if (!fs.existsSync(path)) {
             fs.mkdirSync(path);
         }
         list.forEach(([name], index) => {
             if (level && name) {
+                sum++;
                 switch (level) {
                     case '资深':
                         drawBySpecial(pathBase, ZISHENTemplate, name, level, index, '#313536');
