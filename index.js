@@ -122,4 +122,4 @@ const crop = (xlsxPath, templateJpg) => {
     });
 }
 
-crop('./src/list/证书制作名单20200111.xlsx')
+crop('./src/list/证书制作名单20201108.xlsx')
